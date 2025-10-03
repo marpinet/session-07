@@ -6,42 +6,57 @@
     <title>Calculadora de Suma</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
             max-width: 600px;
             margin: 2rem auto;
             padding: 0 1rem;
+            background-color: #008080;
         }
         .calculator {
-            background-color: #f5f5f5;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #c0c0c0;
+            padding: 1rem;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf;
+        }
+        .calculator h1 {
+            background-color: #000080;
+            color: white;
+            margin: -1rem -1rem 1rem -1rem;
+            padding: 0.3rem;
+            font-size: 1rem;
+            font-weight: bold;
         }
         .input-group {
             margin-bottom: 1rem;
         }
         input {
-            padding: 0.5rem;
-            width: 100%;
+            width: calc(100% - 6px);
             margin-bottom: 0.5rem;
+            border: 2px inset #fff;
+            background-color: #fff;
+            padding: 3px;
+            font-family: 'MS Sans Serif', sans-serif;
         }
         button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf;
+            padding: 0.3rem 1rem;
             cursor: pointer;
+            font-family: 'MS Sans Serif', sans-serif;
+            font-size: 1rem;
         }
-        button:hover {
-            background-color: #45a049;
+        button:active {
+            border-color: #808080 #ffffff #ffffff #808080;
         }
         #resultado {
-            font-size: 1.2rem;
             margin-top: 1rem;
-            padding: 1rem;
+            padding: 0.5rem;
             background-color: #fff;
-            border-radius: 4px;
+            border: 2px inset #fff;
+            font-family: 'MS Sans Serif', sans-serif;
         }
     </style>
 </head>
