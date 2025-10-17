@@ -3,73 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Suma</title>
+    <title>Pizarra Digital</title>
     <style>
         body {
-            font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            background-color: #008080;
+            margin: 0;
+            padding: 20px;
+            background-color: #2a2a2a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
         }
-        .calculator {
-            background-color: #c0c0c0;
-            padding: 1rem;
-            border: 2px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf;
+        .controls {
+            margin-bottom: 20px;
+            background: #3a3a3a;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
         }
-        .calculator h1 {
-            background-color: #000080;
-            color: white;
-            margin: -1rem -1rem 1rem -1rem;
-            padding: 0.3rem;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-        .input-group {
-            margin-bottom: 1rem;
-        }
-        input {
-            width: calc(100% - 6px);
-            margin-bottom: 0.5rem;
-            border: 2px inset #fff;
-            background-color: #fff;
-            padding: 3px;
-            font-family: 'MS Sans Serif', sans-serif;
-        }
-        button {
-            background-color: #c0c0c0;
-            border: 2px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf;
-            padding: 0.3rem 1rem;
+        .chalk-btn {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #4a4a4a;
+            border-radius: 50%;
             cursor: pointer;
-            font-family: 'MS Sans Serif', sans-serif;
-            font-size: 1rem;
+            transition: transform 0.2s;
         }
-        button:active {
-            border-color: #808080 #ffffff #ffffff #808080;
+        .chalk-btn:hover {
+            transform: scale(1.1);
         }
-        #resultado {
-            margin-top: 1rem;
-            padding: 0.5rem;
-            background-color: #fff;
-            border: 2px inset #fff;
-            font-family: 'MS Sans Serif', sans-serif;
+        .chalk-btn.active {
+            border-color: #fff;
+        }
+        #canvas {
+            background-color: #2b2b2b;
+            border: 20px solid #3c2b21;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            cursor: crosshair;
+        }
+        #clear {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        #clear:hover {
+            background: #ff6666;
         }
     </style>
 </head>
 <body>
-    <div class="calculator">
-        <h1>Calculadora de Suma</h1>
-        <div class="input-group">
-            <input type="number" id="numero1" placeholder="Ingrese el primer número">
-            <input type="number" id="numero2" placeholder="Ingrese el segundo número">
-        </div>
-        <button onclick="sumar()">Sumar</button>
-        <div id="resultado">El resultado aparecerá aquí</div>
+    <div class="controls">
+        <button class="chalk-btn active" style="background-color: #fff" data-color="#ffffff"></button>
+        <button class="chalk-btn" style="background-color: #b19cd9" data-color="#b19cd9"></button>
+        <button class="chalk-btn" style="background-color: #90caf9" data-color="#90caf9"></button>
+        <button class="chalk-btn" style="background-color: #fff59d" data-color="#fff59d"></button>
+        <button class="chalk-btn" style="background-color: #a5d6a7" data-color="#a5d6a7"></button>
+        <button id="clear">Borrar Todo</button>
     </div>
+    <canvas id="canvas"></canvas>
     <script src="script.js"></script>
 </body>
 </html>
