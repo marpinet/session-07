@@ -21,7 +21,25 @@
             padding: 15px;
             border-radius: 8px;
             display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .color-controls {
+            display: flex;
             gap: 10px;
+        }
+        .size-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        .size-controls input[type="range"] {
+            width: 100px;
+        }
+        #size-value {
+            min-width: 20px;
+            text-align: center;
         }
         .chalk-btn {
             width: 40px;
@@ -34,8 +52,24 @@
         .chalk-btn:hover {
             transform: scale(1.1);
         }
-        .chalk-btn.active {
+        .chalk-btn.active, .tool-btn.active {
             border-color: #fff;
+        }
+        .tool-btn {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #4a4a4a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        .tool-btn:hover {
+            transform: scale(1.1);
         }
         #canvas {
             background-color: #2b2b2b;
@@ -60,11 +94,19 @@
 </head>
 <body>
     <div class="controls">
-        <button class="chalk-btn active" style="background-color: #fff" data-color="#ffffff"></button>
-        <button class="chalk-btn" style="background-color: #b19cd9" data-color="#b19cd9"></button>
-        <button class="chalk-btn" style="background-color: #90caf9" data-color="#90caf9"></button>
-        <button class="chalk-btn" style="background-color: #fff59d" data-color="#fff59d"></button>
-        <button class="chalk-btn" style="background-color: #a5d6a7" data-color="#a5d6a7"></button>
+        <div class="color-controls">
+            <button class="chalk-btn active" style="background-color: #fff" data-color="#ffffff"></button>
+            <button class="chalk-btn" style="background-color: #b19cd9" data-color="#b19cd9"></button>
+            <button class="chalk-btn" style="background-color: #90caf9" data-color="#90caf9"></button>
+            <button class="chalk-btn" style="background-color: #fff59d" data-color="#fff59d"></button>
+            <button class="chalk-btn" style="background-color: #a5d6a7" data-color="#a5d6a7"></button>
+            <button id="eraser" class="tool-btn" title="Borrador"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="white" d="M16.24 3.56l4.95 4.94c.78.79.78 2.05 0 2.84L12 20.53a4.008 4.008 0 01-5.66 0L2.81 17c-.78-.79-.78-2.05 0-2.84l10.6-10.6c.79-.78 2.05-.78 2.83 0zM4.22 15.58l3.54 3.53c.78.79 2.04.79 2.83 0l7.07-7.07-6.37-6.37-7.07 7.07c-.79.79-.79 2.05 0 2.84z"/></svg></button>
+        </div>
+        <div class="size-controls">
+            <label for="chalk-size">Tamaño:</label>
+            <input type="range" id="chalk-size" min="1" max="20" value="2" step="1">
+            <span id="size-value">2</span>
+        </div>
         <button id="clear">Borrar Todo</button>
     </div>
     <canvas id="canvas"></canvas>

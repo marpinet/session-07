@@ -16,13 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Drawing variables
     let isDrawing = false;
     let currentColor = '#ffffff';
+    let currentSize = 2;
     let lastX = 0;
     let lastY = 0;
+    let isErasing = false;
 
     // Chalk effect settings
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.globalAlpha = 0.85;
+    
+    // Get background color from canvas style
+    const canvasBackgroundColor = '#2b2b2b';
+
+    // Size control
+    const sizeSlider = document.getElementById('chalk-size');
+    const sizeValue = document.getElementById('size-value');
+    
+    sizeSlider.addEventListener('input', (e) => {
+        currentSize = parseInt(e.target.value);
+        sizeValue.textContent = currentSize;
+    });
 
     // Drawing functions
     function startDrawing(e) {
@@ -41,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Chalk effect
         ctx.strokeStyle = currentColor;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = currentSize;
         
         // Main line
         ctx.beginPath();
@@ -95,15 +109,28 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
 
-    // Color selection
+    // Color selection and eraser
+    const eraserBtn = document.getElementById('eraser');
+    
     chalkButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             // Remove active class from all buttons
             chalkButtons.forEach(b => b.classList.remove('active'));
+            eraserBtn.classList.remove('active');
             // Add active class to clicked button
             btn.classList.add('active');
-            // Set current color
+            // Set current color and disable eraser
             currentColor = btn.dataset.color;
+            isErasing = false;
+            ctx.globalCompositeOperation = 'source-over';
         });
+    });
+
+    // Eraser functionality
+    eraserBtn.addEventListener('click', () => {
+        chalkButtons.forEach(b => b.classList.remove('active'));
+        eraserBtn.classList.add('active');
+        isErasing = true;
+        ctx.globalCompositeOperation = 'destination-out';
     });
 });
